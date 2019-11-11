@@ -13,6 +13,6 @@ connection = pika.BlockingConnection(pika.ConnectionParameters())
 nome_fila = 'filaJson'
 channel = connection.channel()
 channel.queue_declare(queue=nome_fila)
-channel.basic_consume(on_message_callback=consumer_callback, queue=nome_fila)
+channel.basic_consume(on_message_callback=consumer_callback, queue=nome_fila, auto_ack=True)
 
 channel.start_consuming()
